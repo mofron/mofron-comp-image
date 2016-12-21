@@ -33,10 +33,10 @@ mofron.parts.Image = class extends mofron.parts.Base {
             var _hei = (hei === undefined) ? null : hei;
             var _wid = (wid === undefined) ? null : wid;
             if ((null === _hei) || (null === _wid)) {
-                return {
+                return [
                     this.height(),
                     this.width()
-                };
+                ];
             }
             this.height(hei);
             this.width(wid);
