@@ -1,10 +1,10 @@
 /**
- * @file   Image.js
- * @brief  Base UI Image Class
+ * @file   image.js
+ * @brief  image component class
  * @author simpart
  */
 
-mofron.parts.Image = class extends mofron.parts.Base {
+mofron.comp.Image = class extends mofron.comp.Base {
     getTarget () {
         try {
             return this.vdom.getChild(0);
