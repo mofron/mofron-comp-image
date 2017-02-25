@@ -4,24 +4,17 @@
  * @author simpart
  */
 
-mofron.comp.Image = class extends mofron.comp.Base {
-    getTarget () {
-        try {
-            return this.vdom.getChild(0);
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
+mofron.comp.Image = class extends mofron.Component {
     
-    initContents (vd, prm) {
+    initDomConts (prm) {
         try {
             if ('string' !== (typeof prm)) {
                 throw new Error('invalid parameter');
             }
-            var image = new mofron.util.Vdom('img');
-            image.setAttr('src', prm);
-            vd.addChild(image);
+            var image = new mofron.Dom('img',this);
+            image.attr('src', prm);
+            this.vdom().addChild(image);
+            this.target(image);
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -48,14 +41,20 @@ mofron.comp.Image = class extends mofron.comp.Base {
     
     width (val) {
         try {
-            var _val = (val === undefined) ? null : val;
-            if (null === _val) {
-                return this.getTarget().getAttr('width');
+            if (undefined === val) {
+                /* getter */
+                return mofron.func.getLength(
+                           this.target().style('width')
+                       );
             }
-            if ('number' !== (typeof _val)) {
+            /* setter */
+            if ('number' === (typeof val)) {
+                this.target().style('width', val + 'px');
+            } else if ('string' === typeof val) {
+                this.target().style('width', val);
+            } else {
                 throw new Error('invalid parameter');
             }
-            this.getTarget().setAttr('width', val);
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -64,17 +63,24 @@ mofron.comp.Image = class extends mofron.comp.Base {
     
     height (val) {
         try {
-            var _val = (val === undefined) ? null : val;
-            if (null === _val) {
-                return this.getTarget().getAttr('height');
+            if (undefined === val) {
+                /* getter */
+                return mofron.func.getLength(
+                           this.target().style('height')
+                       );
             }
-            if ('number' !== (typeof _val)) {
+            /* setter */
+            if ('number' === (typeof val)) {
+                this.target().style('height', val + 'px');
+            } else if ('string' === typeof val) {
+                this.target().style('height', val);
+            } else {
                 throw new Error('invalid parameter');
             }
-            this.getTarget().setAttr('height', val);
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
 }
+module.exports = mofron.comp.Image;
