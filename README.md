@@ -1,4 +1,4 @@
-# mofron-parts-image
+# mofron-comp-image
 image component for mofron.<br>
 please see [here](https://github.com/simpart/mofron) about an overview of mofron.<br>
 
