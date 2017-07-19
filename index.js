@@ -1,9 +1,12 @@
 /**
- * @file   image.js
- * @brief  image component class
+ * @file   mofron-comp-image/index.js
  * @author simpart
  */
 
+/**
+ * @class Image
+ * @brief image component for mofron
+ */
 mofron.comp.Image = class extends mofron.Component {
     
     initDomConts (prm) {
@@ -12,7 +15,9 @@ mofron.comp.Image = class extends mofron.Component {
                 throw new Error('invalid parameter');
             }
             var image = new mofron.Dom('img',this);
-            image.attr('src', prm);
+            image.attr({
+                'src' : prm
+            });
             this.vdom().addChild(image);
             this.target(image);
         } catch (e) {
@@ -49,9 +54,9 @@ mofron.comp.Image = class extends mofron.Component {
             }
             /* setter */
             if ('number' === (typeof val)) {
-                this.target().style('width', val + 'px');
+                this.target().style({ 'width' : val + 'px' });
             } else if ('string' === typeof val) {
-                this.target().style('width', val);
+                this.target().style({ 'width' : val });
             } else {
                 throw new Error('invalid parameter');
             }
@@ -71,9 +76,9 @@ mofron.comp.Image = class extends mofron.Component {
             }
             /* setter */
             if ('number' === (typeof val)) {
-                this.target().style('height', val + 'px');
+                this.target().style({ 'height' : val + 'px' });
             } else if ('string' === typeof val) {
-                this.target().style('height', val);
+                this.target().style({ 'height' : val });
             } else {
                 throw new Error('invalid parameter');
             }
@@ -83,4 +88,5 @@ mofron.comp.Image = class extends mofron.Component {
         }
     }
 }
+mofron.comp.image = {};
 module.exports = mofron.comp.Image;
