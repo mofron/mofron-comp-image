@@ -1,6 +1,6 @@
 {
   "name": "mofron-comp-image",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "image component for mofron",
   "main": "index.js",
   "scripts": {

@@ -80,14 +80,14 @@ mofron.comp.Image = class extends mofron.Component {
             if (undefined === val) {
                 /* getter */
                 return mofron.func.getLength(
-                           this.target().style('width')
+                           this.style('width')
                        );
             }
             /* setter */
             if ('number' === (typeof val)) {
-                this.target().style({ 'width' : val + 'px' });
+                this.style({ 'width' : val + 'px' });
             } else if ('string' === typeof val) {
-                this.target().style({ 'width' : val });
+                this.style({ 'width' : val });
             } else {
                 throw new Error('invalid parameter');
             }
@@ -102,14 +102,14 @@ mofron.comp.Image = class extends mofron.Component {
             if (undefined === val) {
                 /* getter */
                 return mofron.func.getLength(
-                           this.target().style('height')
+                           this.style('height')
                        );
             }
             /* setter */
             if ('number' === (typeof val)) {
-                this.target().style({ 'height' : val + 'px' });
+                this.style({ 'height' : val + 'px' });
             } else if ('string' === typeof val) {
-                this.target().style({ 'height' : val });
+                this.style({ 'height' : val });
             } else {
                 throw new Error('invalid parameter');
             }
