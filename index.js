@@ -38,18 +38,18 @@ mofron.comp.Image = class extends mofron.Component {
         }
     }
     
-    size (hei, wid) {
+    size (x, y) {
         try {
-            var _hei = (hei === undefined) ? null : hei;
-            var _wid = (wid === undefined) ? null : wid;
-            if ((null === _hei) || (null === _wid)) {
+            if (undefined === x) {
+                /* getter */
                 return [
-                    this.height(),
-                    this.width()
+                    this.width(),
+                    this.height()
                 ];
             }
-            this.height(hei);
-            this.width(wid);
+            /* setter */
+            this.width(x);
+            this.height(y);
         } catch (e) {
             console.error(e.stack);
             throw e;
