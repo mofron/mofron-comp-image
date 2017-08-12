@@ -9,17 +9,32 @@
  */
 mofron.comp.Image = class extends mofron.Component {
     
+    constructor (prm_opt) {
+        try {
+            super();
+            this.name('Image');
+            this.prmOpt(
+                ('string' === typeof prm_opt) ?
+                    {param : prm_opt} : prm_opt
+            );
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
     initDomConts (prm) {
         try {
             if ('string' !== (typeof prm)) {
                 throw new Error('invalid parameter');
             }
-            var image = new mofron.Dom('img',this);
-            image.attr({
-                'src' : prm
-            });
-            this.vdom().addChild(image);
-            this.target(image);
+            this.vdom().addChild(
+                new mofron.Dom({
+                    tag       : 'img',
+                    component : this,
+                    attr      : { src : prm }
+                })
+            );
         } catch (e) {
             console.error(e.stack);
             throw e;
