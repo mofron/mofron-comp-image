@@ -13,10 +13,7 @@ mofron.comp.Image = class extends mofron.Component {
         try {
             super();
             this.name('Image');
-            this.prmOpt(
-                ('string' === typeof prm_opt) ?
-                    {param : prm_opt} : prm_opt
-            );
+            this.prmOpt(prm_opt);
         } catch (e) {
             console.error(e.stack);
             throw e;
