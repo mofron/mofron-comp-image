@@ -9,11 +9,11 @@
  */
 mofron.comp.Image = class extends mofron.Component {
     
-    constructor (prm_opt) {
+    constructor (po) {
         try {
             super();
             this.name('Image');
-            this.prmOpt(prm_opt);
+            this.prmOpt(po);
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -22,12 +22,12 @@ mofron.comp.Image = class extends mofron.Component {
     
     initDomConts (prm) {
         try {
-            this.vdom().addChild(
+            this.adom().addChild(
                 new mofron.Dom({
                     tag       : 'img',
                     component : this,
                     attr      : {
-                        src : (null !== prm) ? prm : ''
+                        src : (undefined !== prm) ? prm : ''
                     }
                 })
             );
@@ -56,68 +56,5 @@ mofron.comp.Image = class extends mofron.Component {
             throw e;
         }
     }
-    
-    size (x, y) {
-        try {
-            if (undefined === x) {
-                /* getter */
-                return [
-                    this.width(),
-                    this.height()
-                ];
-            }
-            /* setter */
-            this.width(x);
-            this.height(y);
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
-    
-    width (val) {
-        try {
-            if (undefined === val) {
-                /* getter */
-                return mofron.func.getLength(
-                           this.style('width')
-                       );
-            }
-            /* setter */
-            if ('number' === (typeof val)) {
-                this.style({ 'width' : val + 'px' });
-            } else if ('string' === typeof val) {
-                this.style({ 'width' : val });
-            } else {
-                throw new Error('invalid parameter');
-            }
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
-    
-    height (val) {
-        try {
-            if (undefined === val) {
-                /* getter */
-                return mofron.func.getLength(
-                           this.style('height')
-                       );
-            }
-            /* setter */
-            if ('number' === (typeof val)) {
-                this.style({ 'height' : val + 'px' });
-            } else if ('string' === typeof val) {
-                this.style({ 'height' : val });
-            } else {
-                throw new Error('invalid parameter');
-            }
-        } catch (e) {
-            console.error(e.stack);
-            throw e;
-        }
-    }
 }
-mofron.comp.image = {};
 module.exports = mofron.comp.Image;
