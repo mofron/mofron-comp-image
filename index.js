@@ -42,9 +42,7 @@ mofron.comp.Image = class extends mofron.Component {
             if ('string' !== typeof val) {
                 throw new Error('invalid parameter');
             }
-            this.target().attr({
-                src : val
-            });
+            this.target().attr({ src : val });
         } catch (e) {
             console.error(e.stack);
             throw e;
