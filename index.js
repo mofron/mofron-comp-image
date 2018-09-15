@@ -13,7 +13,7 @@ mofron.comp.Image = class extends mofron.Component {
         try {
             super();
             this.name('Image');
-            this.prmMap('path');
+            this.prmMap('value');
             this.prmOpt(po);
         } catch (e) {
             console.error(e.stack);
@@ -32,17 +32,31 @@ mofron.comp.Image = class extends mofron.Component {
         }
     }
     
-    path (val) {
+    path (prm) {
+        try { return this.value(prm); } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    base64 (prm) {
+        try { return this.value(prm); } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    value (prm) {
         try {
-            if (undefined === val) {
+            if (undefined === prm) {
                 /* getter */
                 return this.target().attr('src');
             }
             /* setter */
-            if ('string' !== typeof val) {
+            if ('string' !== typeof prm) {
                 throw new Error('invalid parameter');
             }
-            this.target().attr({ src : val });
+            this.target().attr({ src : prm });
         } catch (e) {
             console.error(e.stack);
             throw e;
