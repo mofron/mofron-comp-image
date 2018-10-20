@@ -1,6 +1,6 @@
 {
   "name": "mofron-comp-image",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "image component for mofron",
   "main": "index.js",
   "scripts": {
@@ -11,10 +11,10 @@
     "url": "git+https://github.com/simpart/mofron-comp-image.git"
   },
   "keywords": [
-    "mofron"
+    "fornt-end"
   ],
   "author": "simparts",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/simpart/mofron-comp-image/issues"
   },

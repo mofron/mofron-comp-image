@@ -1,14 +1,16 @@
 /**
  * @file   mofron-comp-image/index.js
+ * @brief  image component for mofron
  * @author simpart
  */
+const mf = require('mofron');
 
-/**
- * @class Image
- * @brief image component for mofron
- */
-mofron.comp.Image = class extends mofron.Component {
-    
+mf.comp.Image = class extends mofron.Component {
+    /**
+     * initialize image component
+     *
+     * @param p1 (string) path to image
+     */
     constructor (po) {
         try {
             super();
@@ -21,17 +23,25 @@ mofron.comp.Image = class extends mofron.Component {
         }
     }
     
+    /**
+     * initialize dom contents
+     *
+     * @note private method
+     */
     initDomConts () {
-        try {
-            this.adom().addChild(
-                new mofron.Dom('img', this)
-            );
-        } catch (e) {
+        try { super.initDomConts('img'); } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
+    /**
+     * setter/getter image path
+     *
+     * @param p1 (string) path to image
+     * @param p1 (undefined) call as getter
+     * @return (string) path to image
+     */
     path (prm) {
         try { return this.value(prm); } catch (e) {
             console.error(e.stack);
@@ -39,6 +49,13 @@ mofron.comp.Image = class extends mofron.Component {
         }
     }
     
+    /**
+     * setter/getter base64 image value
+     *
+     * @param p1 (number) base64 image value
+     * @param p1 (undefined) call as getter
+     * @return (number) base64 image value
+     */
     base64 (prm) {
         try { return this.value(prm); } catch (e) {
             console.error(e.stack);
@@ -46,6 +63,12 @@ mofron.comp.Image = class extends mofron.Component {
         }
     }
     
+    /**
+     * src value of dom attribute
+     * 
+     * @param p1 (string/number) src value of dom attribute
+     * @note private method
+     */
     value (prm) {
         try {
             if (undefined === prm) {
