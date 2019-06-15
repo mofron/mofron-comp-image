@@ -9,13 +9,14 @@ mf.comp.Image = class extends mofron.Component {
     /**
      * initialize image component
      *
-     * @param p1 (string) path to image
+     * @param "path" parameter
+     * @type private
      */
     constructor (po) {
         try {
             super();
-            this.name('Image');
-            this.prmMap('value');
+            this.name("Image");
+            this.prmMap("path");
             this.prmOpt(po);
         } catch (e) {
             console.error(e.stack);
@@ -26,7 +27,7 @@ mf.comp.Image = class extends mofron.Component {
     /**
      * initialize dom contents
      *
-     * @note private method
+     * @type private
      */
     initDomConts () {
         try { super.initDomConts('img'); } catch (e) {
@@ -36,27 +37,51 @@ mf.comp.Image = class extends mofron.Component {
     }
     
     /**
-     * setter/getter image path
+     * image path
      *
-     * @param p1 (string) path to image
-     * @param p1 (undefined) call as getter
+     * @param (string) path to image
      * @return (string) path to image
+     * @type tag parameter
      */
     path (prm) {
-        try { return this.value(prm); } catch (e) {
+        try {
+            if ((undefined !== prm) && ("string" !== typeof prm)) {
+                throw new Error("invalid parameter");
+            }
+            return this.value(prm);
+        } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
     
     /**
-     * setter/getter base64 image value
+     * base64 image value
      *
-     * @param p1 (number) base64 image value
-     * @param p1 (undefined) call as getter
+     * @param (number) base64 image value
      * @return (number) base64 image value
+     * @type tag parameter
      */
     base64 (prm) {
+        try {
+            if ((undefined !== prm) && ("number" !== typeof prm)) {
+                throw new Error("invalid parameter");
+            }
+            return this.value(prm);
+        } catch (e) {
+            console.error(e.stack);
+            throw e;
+        }
+    }
+    
+    /**
+     * src value of dom attribute
+     * 
+     * @param (string/number) same as "value"
+     * @return (string) src value of dom attribute
+     * @type tag parameter
+     */
+    src (prm) {
         try { return this.value(prm); } catch (e) {
             console.error(e.stack);
             throw e;
@@ -66,8 +91,9 @@ mf.comp.Image = class extends mofron.Component {
     /**
      * src value of dom attribute
      * 
-     * @param p1 (string/number) src value of dom attribute
-     * @note private method
+     * @param (string/number) src value of dom attribute
+     * @return (string) src value of dom attribute
+     * @type private
      */
     value (prm) {
         try {
