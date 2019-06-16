@@ -1,18 +1,25 @@
 # mofron-comp-image
-image component for mofron.<br>
-please see [here](https://github.com/simpart/mofron) about an overview of mofron.<br>
+[mofron](https://mofron.github.io/mofron/) is module based frontend framework.
+
+image component for [mofron](https://mofron.github.io/mofron/).
 
 # Install
 ```bash
-npm install --save-dev mofron
+npm install mofron mofron-comp-image
 ```
 
 # Sample
-```javascript
-require('mofron');
-let Img    = require('mofron-comp-image');
-new Img({
-    param : './path/to/image',
-    visible : true
-});
+```html
+<require>
+    <tag module="mofron-comp-image">Image</tag>
+</require>
+<Image size="1.5rem","1.5rem">./img/logo.png</Image>
 ```
+
+# Parameter
+
+| Simple<br>Param | Parameter Name     | Type                  |    Description                         |
+|:---------------:|:-------------------|:----------------------|:---------------------------------------|
+|        ◯        | path               | string                | path to image                          |
+|                 | base64             | number                | base64 image value                     |
+|                 | src                | string/number         | src value of dom attribute             |
