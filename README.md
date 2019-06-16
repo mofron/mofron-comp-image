@@ -13,7 +13,7 @@ npm install mofron mofron-comp-image
 <require>
     <tag module="mofron-comp-image">Image</tag>
 </require>
-<Image size="1.5rem","1.5rem">./img/logo.png</Image>
+<Image size="1.5rem","1.5rem">./image.png</Image>
 ```
 
 # Parameter
