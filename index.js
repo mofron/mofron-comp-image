@@ -1,6 +1,6 @@
 /**
- * @file   mofron-comp-image/index.js
- * @brief  image component for mofron
+ * @file mofron-comp-image/index.js
+ * @brief image component for mofron
  * @author simpart
  */
 const mf = require('mofron');
@@ -9,7 +9,9 @@ mf.comp.Image = class extends mofron.Component {
     /**
      * initialize image component
      *
-     * @param "path" parameter
+     * @param (mixed) path parameter
+     *                object: component option
+     * @pmap path
      * @type private
      */
     constructor (po) {
@@ -41,7 +43,7 @@ mf.comp.Image = class extends mofron.Component {
      *
      * @param (string) path to image
      * @return (string) path to image
-     * @type tag parameter
+     * @type parameter
      */
     path (prm) {
         try {
@@ -60,7 +62,7 @@ mf.comp.Image = class extends mofron.Component {
      *
      * @param (number) base64 image value
      * @return (number) base64 image value
-     * @type tag parameter
+     * @type parameter
      */
     base64 (prm) {
         try {
@@ -77,9 +79,9 @@ mf.comp.Image = class extends mofron.Component {
     /**
      * src value of dom attribute
      * 
-     * @param (string/number) same as "value"
+     * @param (string) same as "value"
      * @return (string) src value of dom attribute
-     * @type tag parameter
+     * @type parameter
      */
     src (prm) {
         try { return this.value(prm); } catch (e) {
@@ -91,8 +93,9 @@ mf.comp.Image = class extends mofron.Component {
     /**
      * src value of dom attribute
      * 
-     * @param (string/number) src value of dom attribute
-     * @return (string) src value of dom attribute
+     * @param (mixed) string: path to image
+     *                number: base64 value
+     * @return (mixed) src value of dom attribute
      * @type private
      */
     value (prm) {
