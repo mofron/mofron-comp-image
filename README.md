@@ -12,15 +12,16 @@ npm install mofron mofron-comp-image
 # Sample
 ```html
 <require>
-    <tag module="mofron-comp-image">Image</tag>
+    <tag load="mofron-comp-image">Image</tag>
 </require>
-<Image size="1.5rem","1.5rem">./image.png</Image>
+<Image size=(1.5rem,1.5rem)>./image.png</Image>
 ```
+
 # Parameter
 
-|Simple<br>Param | Parameter Name | Type | Description |
-|:--------------:|:---------------|:-----|:------------|
+| Short<br>Form | Parameter Name | Type | Description |
+|:-------------:|:---------------|:-----|:------------|
 | ◯  | path | string | path to image |
 | | base64 | number | base64 image value |
-| | src | string | same as "value" |
+| | src | string | path to image file |
 

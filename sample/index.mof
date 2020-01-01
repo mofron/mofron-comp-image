@@ -1,4 +1,4 @@
 <require>
-    <tag module="mofron-comp-image">Image</tag>
+    <tag load="mofron-comp-image">Image</tag>
 </require>
-<Image size="1.5rem","1.5rem">./image.png</Image>
+<Image size=(1.5rem,1.5rem)>./image.png</Image>

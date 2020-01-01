@@ -1,25 +1,27 @@
 /**
  * @file mofron-comp-image/index.js
  * @brief image component for mofron
- * @author simpart
+ * @license MIT
  */
-const mf = require('mofron');
 
-mf.comp.Image = class extends mofron.Component {
+module.exports = class extends mofron.class.Component {
     /**
      * initialize image component
      *
      * @param (mixed) path parameter
-     *                object: component option
-     * @pmap path
+     *                key-value: component option
+     * @short path
      * @type private
      */
     constructor (po) {
         try {
             super();
             this.name("Image");
-            this.prmMap("path");
-            this.prmOpt(po);
+            this.shortForm("path");
+
+	    if (0 < arguments.length) {
+                this.config(p1);
+            }
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -32,7 +34,9 @@ mf.comp.Image = class extends mofron.Component {
      * @type private
      */
     initDomConts () {
-        try { super.initDomConts('img'); } catch (e) {
+        try {
+	    super.initDomConts('img');
+	} catch (e) {
             console.error(e.stack);
             throw e;
         }
@@ -47,9 +51,6 @@ mf.comp.Image = class extends mofron.Component {
      */
     path (prm) {
         try {
-            if ((undefined !== prm) && ("string" !== typeof prm)) {
-                throw new Error("invalid parameter");
-            }
             return this.value(prm);
         } catch (e) {
             console.error(e.stack);
@@ -66,9 +67,6 @@ mf.comp.Image = class extends mofron.Component {
      */
     base64 (prm) {
         try {
-            if ((undefined !== prm) && ("number" !== typeof prm)) {
-                throw new Error("invalid parameter");
-            }
             return this.value(prm);
         } catch (e) {
             console.error(e.stack);
@@ -79,12 +77,14 @@ mf.comp.Image = class extends mofron.Component {
     /**
      * src value of dom attribute
      * 
-     * @param (string) same as "value"
-     * @return (string) src value of dom attribute
+     * @param (string) path to image file
+     * @return (string) path to image file
      * @type parameter
      */
     src (prm) {
-        try { return this.value(prm); } catch (e) {
+        try {
+	    return this.value(prm);
+	} catch (e) {
             console.error(e.stack);
             throw e;
         }
@@ -105,15 +105,14 @@ mf.comp.Image = class extends mofron.Component {
                 return this.target().attr('src');
             }
             /* setter */
-            if ('string' !== typeof prm) {
+            if (('string' !== typeof prm) && ('number' !== typeof prm)) {
                 throw new Error('invalid parameter');
             }
-            this.target().attr({ src : prm });
+            this.childDom().attrs({ src : prm });
         } catch (e) {
             console.error(e.stack);
             throw e;
         }
     }
 }
-module.exports = mofron.comp.Image;
 /* end of file */
