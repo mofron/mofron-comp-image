@@ -13,7 +13,7 @@ module.exports = class extends mofron.class.Component {
      * @short path
      * @type private
      */
-    constructor (po) {
+    constructor (p1) {
         try {
             super();
             this.name("Image");
