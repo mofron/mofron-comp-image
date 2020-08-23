@@ -11,9 +11,9 @@ npm install mofron mofron-comp-image
 
 # Sample
 ```html
-<require>
+<setting>
     <tag load="mofron-comp-image">Image</tag>
-</require>
+</setting>
 <Image size=(1.5rem,1.5rem)>./image.png</Image>
 ```
 

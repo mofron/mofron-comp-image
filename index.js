@@ -16,7 +16,7 @@ module.exports = class extends mofron.class.Component {
     constructor (p1) {
         try {
             super();
-            this.name("Image");
+            this.modname("Image");
             this.shortForm("path");
 
 	    if (0 < arguments.length) {
