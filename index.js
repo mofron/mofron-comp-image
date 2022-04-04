@@ -18,7 +18,10 @@ module.exports = class extends mofron.class.Component {
             super();
             this.modname("Image");
             this.shortForm("path");
-
+            
+            this.confmng().add("src", { type: "string" });
+	    this.confmng().add("base64", { type: "string" });
+            
 	    if (0 < arguments.length) {
                 this.config(p1);
             }
@@ -51,7 +54,7 @@ module.exports = class extends mofron.class.Component {
      */
     path (prm) {
         try {
-            return this.value(prm);
+            return this.src(prm);
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -67,7 +70,22 @@ module.exports = class extends mofron.class.Component {
      */
     base64 (prm) {
         try {
-            return this.value(prm);
+            if (undefined === prm) {
+                if (null !== this.src()) {
+                    /* convert to base64 */
+                    let cvs    = document.createElement('canvas');
+		    cvs.width  = this.childDom().getRawDom().width;
+		    cvs.height = this.childDom().getRawDom().height;
+		    let ctx    = cvs.getContext('2d');
+                    ctx.drawImage(this.childDom().getRawDom(), 0, 0);
+                    
+		    this.childDom().getRawDom().crossOrigin = 'Anonymous';
+                    let sp_src = this.src().split('.');
+                    return cvs.toDataURL("image/" + sp_src[sp_src.length-1]);
+		}
+	    }
+            this.value(prm);
+	    return this.confmng("base64", prm);
         } catch (e) {
             console.error(e.stack);
             throw e;
@@ -83,7 +101,8 @@ module.exports = class extends mofron.class.Component {
      */
     src (prm) {
         try {
-	    return this.value(prm);
+	    this.value(prm);
+	    return this.confmng("src", prm);
 	} catch (e) {
             console.error(e.stack);
             throw e;
@@ -102,7 +121,7 @@ module.exports = class extends mofron.class.Component {
         try {
             if (undefined === prm) {
                 /* getter */
-                return this.target().attr('src');
+                return this.childDom().attrs('src');
             }
             /* setter */
             if (('string' !== typeof prm) && ('number' !== typeof prm)) {
